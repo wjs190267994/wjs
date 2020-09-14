@@ -1,0 +1,322 @@
+/**
+ * 作用:定义PageData类型,使用方法与map类似
+ * 作者:罗茂才
+ * */
+(function(win){
+	if(!win.PageData){
+		//定义PageData
+		function PageData(obj){
+			//1.map属性
+			this.map = {};
+			//2.准备初始化
+			if(this.isJsonStr(obj)){
+				this.parse(obj);
+			}else if(undefined!=obj){
+				this.putAll(obj);
+			}
+		}
+		//扩展PageData成员方法
+		PageData.prototype={
+			//判断是否包含key
+			containsKey : function(key){
+				for(var mKey in this.map){
+					if(key == mKey){
+						return true;
+					}
+				}
+				return false;
+			},
+			//判断是否包含value
+			containsValue : function(value){
+				for(var key in this.map){
+					if(value == this.get(key)){
+						return true;
+					}
+				}
+				return false;
+			},
+			//判断pd是否为空
+			isEmpty : function(){
+				for(var key in this.map){
+					return false;
+				}
+				return true;
+			},
+			//判断传入的obj是否是PageData的实例
+			isPageData : function(obj){
+				if(obj instanceof PageData){
+					return true;
+				}else{
+					return false;
+				}
+			},
+			//判断传入的obj是否是一个json对象
+			isJson : function(obj){
+				if(typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length){
+					return true;
+				}else{
+					return false;
+				}
+			},
+			//判断传入的字符串是否符合json规范
+			isJsonStr : function(str){
+				try{
+					JSON.parse(str);
+					return true;
+				}catch(e){
+					return false;
+				}
+			},
+			//取得pd中的值
+			get : function(key){
+				return this.map[key];
+			},
+			//取得pd中map(返回json对象)
+			getMap : function(){
+				return this.map;
+			},
+			//将值放入pd
+			put : function(key,value){
+				this.map[key] = value;
+			},
+			//将对象放入pd
+			putAll : function(obj){
+				if(this.isPageData(obj)){
+					var that = this;
+					obj.each(function(key,value){
+						that.put(key,value);
+					});
+				}else if(this.isJson(obj)){
+					for(var key in obj){
+						this.put(key,obj[key]);
+					}
+				}
+			},
+			//通过json字符串初始化pd
+			parse : function(jsonStr){
+				try{
+					var json = JSON.parse(jsonStr);
+					this.putAll(json);
+				}catch(e){
+					console.warn(e.message+",字符串\n"+jsonStr+"\n不符合json格式,创建了一个空的PageData");
+				}
+			},
+			//遍历map,执行定制方法
+			/**
+			例如:
+			pd.each(function(key,value){
+				alert(key+value);
+			});
+			*/
+			each : function(callback){
+				var pd = this;
+				for(var key in this.map){
+					callback.call(pd,key,this.get(key));
+				}
+			},
+			//删除指定key的元素
+			remove : function(key){
+				delete this.map[key];
+			},
+			//删除所有元素
+			clear : function(key){
+				this.each(function(key,value){
+					this.remove(key);
+				});
+			},
+			//转换为字符串
+			toString : function(key){
+				return JSON.stringify(this.getMap());
+			},
+			//转换为URL参数
+			toUrlString : function(){
+				var param = '';
+				this.each(function(key , value){
+					param += '&' + key + '=';
+					var val = '';
+					if(this.isJson(value)){
+						val = escape(JSON.stringify(value));
+					}else if(this.isPageData(value)){
+						val = escape(value.toString());
+					}else if(undefined!=value){
+						val = escape(value);
+					}
+					param += val;
+				});
+				return param;
+			}
+		}
+		//保存到window对象中
+		win.PageData = PageData;
+	}
+})(window);
+
+/**
+ * 作用:通过postMessage方法实现跨域通信,js方法的跨域调用
+ * 作者:罗茂才
+ * */
+(function(win){
+	win.OriginUtil = {
+			/*
+			 * 监听跨域message
+			 * */
+			messageHandler:function(event){
+				var param = event.data;
+				try{
+					//1.从事件中取得传输的数据
+					var data = param.data;
+					var dataStr = "";
+					//2.代理调用执行方法
+					if(typeof(data) == "object" && Object.prototype.toString.call(data).toLowerCase() == "[object object]" && !data.length){
+						//2.1.传入了json格式的参数
+						dataStr = JSON.stringify(data);
+						eval(param.method+'(JSON.parse(\''+dataStr+'\'))');
+					}else if(undefined==data||''==data){
+						//2.2.没有传入参数
+						eval(param.method+'()');
+					}else{
+						//2.2.传入了不符合json格式的参数
+						throw new Error('postMessage传入的参数不符合json格式');
+					}
+					//3.执行完成,跨域回调success方法
+					OriginUtil.doCallback(event,'success');
+				}catch(e){
+					console.error(e.message);
+					console.error('跨域调用出现异常,尝试执行回异常调方法');
+					//执行失败,跨域回调error方法
+					OriginUtil.doCallback(event,'error');
+				}
+				//执行完毕(可能是失败的),跨域回调complete方法
+				OriginUtil.doCallback(event,'complete');
+			},
+			/*
+			 * 通过postMessage执行回调
+			 * */
+			doCallback:function(event , funType){
+				var param = event.data;
+				try{
+					if(undefined!=param[funType] && ''!=param[funType]){
+						this.callFunction(event.source,{
+							origin:event.origin,
+							method:param[funType],
+							data:param.data
+						});
+					}
+				}catch(e){
+					console.error(e.message);
+				}
+			},
+			/*
+			 * 作用:跨域调用方法
+			 * 参数:
+			 * 1.target 被调用的方法所在的窗口(目标窗口) 
+			 * 2.param 跨域调用参数,一个json对象,包含以下属性:
+			 * {
+			 * origin:'http://localhost:8080',   //必填项:目标窗口所在的域
+			 * method:'$.openTabByJson',         //必填项:跨域调用的目标方法
+			 * success:'sucFunction',            //选填项:执行成功的回调方法,会将data作为参数传回
+			 * error:'errFunction',              //选填项:执行失败的回调方法,会将data作为参数传回
+			 * complete:'comFunction',           //选填项:执行完毕(包含失败)的回调方法,会将data作为参数传回
+			 * data:{                            //选填项:传入目标方法的参数
+			 * 	name:'冒菜',
+			 * 	age:18
+				}
+			 * }
+			 * 注意:param参数中不能包含对象,否则将会导致异常
+			 * */
+			callFunction:function(target , param){
+				target.postMessage(param, param.origin);
+			},
+			/*
+			 * 初始化跨域工具:绑定message事件处理方法
+			 * */
+			init:function(){
+				if(win.addEventListener){
+					win.addEventListener('message', this.messageHandler, false);
+				}else if(win.attachEvent){
+					win.attachEvent('on' + 'message', this.messageHandler);
+				} else{
+					win['onmessage'] = this.messageHandler;
+				}
+			}
+	}
+	//初始化跨域工具
+	OriginUtil.init();
+})(window);
+
+/**
+ * 作用:获取当前窗口url地址中的参数
+ * 作者:罗茂才
+ * */
+(function(win){
+	/*
+	 * 参数:
+	 * 1、name url中的参数名称
+	 * 返回:如果有参数则返回,无则返回null 
+	 * */
+	win.getQueryString = function(name){
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+		var r = window.location.search.substr(1).match(reg); 
+		if (r != null){
+			return unescape(decodeURI(r[2]));
+		}
+		return null; 
+	}
+})(window);
+
+/**
+ * 作用:重写window.open方法。报表页面如果要打开窗体，默认从父页面打开选项卡页面
+ * 作者:罗茂才
+ * */
+(function(win){
+	/*
+	 * 说明:如果当前窗口在ifream框架内,则在父页面打开选项卡页面。否则采用执行默认打开窗口的方法
+	 * */
+	if(top != win){
+		win.oldOpen = win.open;
+		//重载窗口打开方法,优先从父窗口打开
+		win.open = function(url,name,features,replace){
+			try{
+				OriginUtil.callFunction(top,{
+					origin:getQueryString('domain'),
+					method:'$.openTabByJson',
+					success:'',
+					error:'openWindowByJson',//如果失败就用默认方式打开
+					data:{
+						name:getQueryString('title'),
+						url:url,
+						reload:true,
+						features:features,
+						replace:replace
+					}
+				});
+			}catch(e){
+				console.error(e.message);
+				oldOpen(url,getQueryString('title'),features,replace);
+			}
+		}
+		//如果父页面打开窗口失败,则让父页面回调这个方法,来打开预览窗口
+		win.openWindowByJson = function(data){
+			oldOpen(data.url,data.name,data.features,data.replace);
+		}
+	}
+})(window);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

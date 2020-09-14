@@ -1,0 +1,464 @@
+
+<!-- saved from url=(0435)https://zkreport.sceea.cn/report//exam/tk/tkbsbkzkz/mainview?query=F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774&domain=https://zk.sceea.cn&title=%E7%BB%9F%E8%80%83%E7%AC%94%E8%AF%95%E6%8A%A5%E8%80%83%E5%87%86%E8%80%83%E8%AF%81%E6%89%93%E5%8D%B0%20-%20%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88 -->
+<html class="panel-fit"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./mainview_files/report-extends.js.下载"></script>
+
+
+
+
+
+
+
+
+
+    <meta name="viewport" content="initial-scale=1">
+<link type="text/css" href="./mainview_files/style.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./mainview_files/easyui.css"><link rel="stylesheet" type="text/css" href="./mainview_files/icon.css"><script type="text/javascript" src="./mainview_files/jquery.min.js.下载"></script><script type="text/javascript" src="./mainview_files/jquery.easyui.min.js.下载"></script><script type="text/javascript" src="./mainview_files/easyui-lang-zh_CN.js.下载"></script></head>
+
+
+
+
+
+
+
+
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" style="background:#F1F4F7" onload="try{parent.hideLoading()}catch(e){}" class="panel-noscroll">
+
+
+<div id="mengban" style="background-color: white; position: absolute; z-index: 999; width: 100%; height: 100%; display: none;">
+	<table width="100%" height="100%">
+		<tbody><tr><td width="100%" style="text-align:center;vertical-align:middle"><img src="./mainview_files/loading.gif"><br>正在加载报表......</td></tr>
+	</tbody></table>
+</div>
+<div id="reportArea" class="easyui-layout layout easyui-fluid" data-options="fit:true" style="width: 1920px; height: 937px;">
+<div class="panel layout-panel layout-panel-north" style="width: 1920px; left: 0px; top: 0px;"><div data-options="region:&#39;north&#39;,border:false" style="overflow: hidden; width: 1920px; height: 30px;" title="" class="panel-body panel-body-noheader panel-body-noborder layout-body">
+
+
+
+<script type="text/javascript" src="./mainview_files/jquery.toastmessage.js.下载"></script>
+<link href="./mainview_files/jquery.toastmessage.css" type="text/css" rel="stylesheet">
+<div class="btnBar">
+  <ul class="left">
+    <li class="toggleBg borderRight">
+      <ul class="fileOper">
+        <!-- <li><a class="ICOhover" href="#" onClick="exportExcel('report1');return false;"><span title="导出excel" class="excel"></span></a></li> -->
+        <!--<li><a class="ICOhover" href="#" onClick="exportPdf('report1');return false;"><span title="导出pdf" class="pdf"></span></a></li>-->
+		<!-- <li><a class="ICOhover" href="#" onClick="exportWord('report1');return false;"><span title="导出word" class="word"></span></a></li> -->
+<!--         <li><a class="ICOhover" href="#" onClick="printReport('report1');return false;"><span title="打印预览" class="print"></span></a></li> -->
+		<!--<li><a class="ICOhover" href="#" onClick="flashPrintReport('report1');return false;"><span title="flash打印预览" class="flashprint"></span></a></li>-->
+		<li><a class="ICOhover" href="https://zkreport.sceea.cn/report//exam/tk/tkbsbkzkz/mainview?query=F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774&amp;domain=https://zk.sceea.cn&amp;title=%E7%BB%9F%E8%80%83%E7%AC%94%E8%AF%95%E6%8A%A5%E8%80%83%E5%87%86%E8%80%83%E8%AF%81%E6%89%93%E5%8D%B0%20-%20%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88#" onclick="pdfPrintReport(&#39;report1&#39;);return false;"><span title="pdf打印预览" class="pdfprint"></span></a></li>
+		<!--<li><a class="ICOhover" href="#" onClick="exportMht('report1');return false;"><span title="导出mht" class="mht"></span></a></li>-->
+       </ul>
+    </li>
+    <li class="toggleBg borderRight">
+      <ul class="fileOper">
+<!--         <li><a class="ICOhover" href="#" onClick="directPrintReport('report1');return false;"><span title="直接打印" class="print"></span></a></li> -->
+		<!--<li><a class="ICOhover" href="#" onClick="directFlashPrintReport('report1');return false;"><span title="flash直接打印" class="flashprint"></span></a></li>-->
+		<!-- <li><a class="ICOhover" href="#" onClick="directPdfPrintReport('report1');return false;"><span title="pdf直接打印" class="pdfprint"></span></a></li> -->
+       </ul>
+    </li>
+   
+    <li class="floatRight borderLeft">
+      <ul class="fileOper">
+         <li><a class="ICOhover" href="https://zkreport.sceea.cn/report//exam/tk/tkbsbkzkz/mainview?query=F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774&amp;domain=https://zk.sceea.cn&amp;title=%E7%BB%9F%E8%80%83%E7%AC%94%E8%AF%95%E6%8A%A5%E8%80%83%E5%87%86%E8%80%83%E8%AF%81%E6%89%93%E5%8D%B0%20-%20%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88#" onclick="try{toPage(&#39;report1&#39;,1);}catch(e){}return false;"><span title="首页" class="begin"></span></a></li>
+        <li><a class="ICOhover" href="https://zkreport.sceea.cn/report//exam/tk/tkbsbkzkz/mainview?query=F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774&amp;domain=https://zk.sceea.cn&amp;title=%E7%BB%9F%E8%80%83%E7%AC%94%E8%AF%95%E6%8A%A5%E8%80%83%E5%87%86%E8%80%83%E8%AF%81%E6%89%93%E5%8D%B0%20-%20%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88#" onclick="try{prevPage(&#39;report1&#39;);}catch(e){}return false;"><span title="上一页" class="pre"></span></a></li>
+        <li><a class="ICOhover" href="https://zkreport.sceea.cn/report//exam/tk/tkbsbkzkz/mainview?query=F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774&amp;domain=https://zk.sceea.cn&amp;title=%E7%BB%9F%E8%80%83%E7%AC%94%E8%AF%95%E6%8A%A5%E8%80%83%E5%87%86%E8%80%83%E8%AF%81%E6%89%93%E5%8D%B0%20-%20%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88#" onclick="try{nextPage(&#39;report1&#39;);}catch(e){}return false;"><span title="下一页" class="next"></span></a></li>
+        <li><a class="ICOhover" href="https://zkreport.sceea.cn/report//exam/tk/tkbsbkzkz/mainview?query=F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774&amp;domain=https://zk.sceea.cn&amp;title=%E7%BB%9F%E8%80%83%E7%AC%94%E8%AF%95%E6%8A%A5%E8%80%83%E5%87%86%E8%80%83%E8%AF%81%E6%89%93%E5%8D%B0%20-%20%E6%89%93%E5%8D%B0%E9%A2%84%E8%A7%88#" onclick="try{toPage(&#39;report1&#39;,getPageCount(&#39;report1&#39;));}catch(e){}return false;"><span title="尾页" class="end"></span></a></li>    
+      </ul>
+    </li>
+    <li class="floatRight">  <div style="display:inline-block; margin:9px 4px 3px 4px; float:left; ">第<span id="report1_currPage">1</span>页/共<span id="t_page_span">1</span>页&nbsp;&nbsp;</div></li>
+  </ul>
+
+</div>
+<script type="text/javascript">
+	var myToast, flashToast;
+	function showToast() {
+		myToast = $().toastmessage('showToast', {
+		    text     : '正在加载打印页......',
+		    sticky   : true,
+		    position : 'middle-center',
+		    type:         'notice'
+		});		
+	}
+	function closeToast() {
+		$().toastmessage('removeToast', myToast);
+	}
+	function showFlashToast() {
+		flashToast = $().toastmessage('showToast', {
+		    text     : '正在打印......',
+		    sticky   : true,
+		    position : 'middle-center',
+		    type:         'notice'
+		});		
+	}
+	function closeFlashToast() {
+		$().toastmessage('removeToast', flashToast);
+	}
+</script>
+ 
+</div></div>
+<div class="panel layout-panel layout-panel-center" style="width: 1920px; left: 0px; top: 30px;"><div data-options="region:&#39;center&#39;,border:false" title="" class="panel-body panel-body-noheader panel-body-noborder layout-body panel-noscroll" style="width: 1920px; height: 907px;">
+<div class="easyui-layout layout easyui-fluid" data-options="fit:true" style="width: 1920px; height: 907px;">
+		
+	<div class="panel layout-panel layout-panel-center" style="width: 1920px; left: 0px; top: 0px;"><div id="reportContainer" data-options="region:&#39;center&#39;,border:false" style="text-align: center; width: 1920px; height: 907px;" title="" class="panel-body panel-body-noheader panel-body-noborder layout-body">
+		<script language="javascript" src="./mainview_files/reportServlet" charset="UTF-8">
+</script>
+<form name="report1_turnPageForm" method="post" action="https://zkreport.sceea.cn/report/WEB-INF/report/exam/tk/tkbsbkzkz/view.jsp?t_i_m_e=1595920439221" style="display:none">
+<input type="hidden" name="title" value="统考笔试报考准考证打印 - 打印预览">
+<input type="hidden" name="query" value="F0BB08E669E0613D0505EF669E5A16C0749FD99791817C97AF0FE1742FDC47A500AFA6E9CF7D4A8BEC7BCB93D7C3620F0CFEFE3A0B3340973B716FF2C4533F755C86154A1311DC2F9DED3FA1CB90F30831B786F575E2DE2FA29181BE26ECA774">
+<input type="hidden" name="domain" value="https://zk.sceea.cn">
+<input type="hidden" name="reportParamsId" value="146286">
+<input type="hidden" name="report1_currPage" value="1">
+<input type="hidden" name="report1_cachedId" value="A_11895585">
+</form><script language="javascript">
+	function report1_toPage( pageNo ) {
+	if( pageNo < 1 || pageNo > report1_getTotalPage() ) return;
+		document.report1_turnPageForm.report1_currPage.value = pageNo;
+		document.report1_turnPageForm.submit();
+	}
+</script>
+<script language="javascript">
+	function report1_getCurrPage() {
+		return 1;
+	}
+	function report1_getTotalPage() {
+		return 1;
+	}
+	var report1_cachedId = "A_11895585";
+</script>
+
+<script language="javascript">
+	function report1_saveAsExcel() {
+		$('#report1_excel_dlg').dialog('open');
+	}
+	function report1_saveAsExcel2( returnVal) {
+		document.getElementById( "report1_saveAs_frame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=3&file=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&columns=0&srcType=file&cachedId=A_11895585&width=0&height=0&reportParamsId=146286&t_i_m_e=1595920439221" + returnVal;
+	}
+</script>
+
+<script language="javascript">
+	function report1_saveAsPdf() {
+		$('#report1_pdf_dlg').dialog('open');
+	}
+	function report1_saveAsPdf2( returnVal ) {
+		document.getElementById( "report1_saveAs_frame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=6&file=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&columns=0&srcType=file&cachedId=A_11895585&reportParamsId=146286&t_i_m_e=1595920439221" + returnVal;
+	}
+</script>
+
+<script language="javascript">
+	function report1_saveAsWord() {
+		document.getElementById( "report1_saveAs_frame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=7&file=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&columns=0&srcType=file&cachedId=A_11895585&reportParamsId=146286&t_i_m_e=1595920439221";
+	}
+</script>
+
+<script language="javascript">
+	function report1_saveAsMht() {
+		document.getElementById( "report1_saveAs_frame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=111&file=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&columns=0&srcType=file&cachedId=A_11895585&reportName=report1&reportParamsId=146286&t_i_m_e=1595920439221";
+	}
+</script>
+
+<script language="javascript">
+	function report1_save2server(cls) {
+		document.getElementById( "report1_saveAs_frame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=31&file=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&columns=0&srcType=file&cachedId=A_11895585&reportParamsId=146286&t_i_m_e=1595920439222&class="+cls;
+	}
+</script>
+
+<script language="javascript">
+	function report1_saveAsText() {
+		document.getElementById( "report1_saveAs_frame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=18&file=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&srcType=file&separator=%09&lineBreak=%0A&exportDisp=no&reportParamsId=146286&t_i_m_e=1595920439222";
+	}
+</script>
+
+<iframe name="report1_saveAs_frame" id="report1_saveAs_frame" src="./mainview_files/reportServlet.html" style="display:none"></iframe>
+<script language="javascript">
+	function report1_print() {
+		document.getElementById( "report1_printIFrame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=2&name=report1&reportFileName=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&cachedId=A_11895585&srcType=file&savePrintSetup=no&appletJarName=raqsoftReportApplet.jar&serverPagedPrint=no&mirror=no&reportParamsId=146286&t_i_m_e=1595920439222";
+	}
+</script>
+<script language="javascript">
+	function report1_flashPrint() {
+		openPrintWindow('https://zkreport.sceea.cn/report/reportServlet?action=41&name=report1&reportFileName=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&cachedId=A_11895585&srcType=file&savePrintSetup=no&mirror=no&reportParamsId=146286&t_i_m_e=1595920439222','report1_pw',1080,640);
+	}
+	function report1_directFlashPrint() {
+		document.getElementById( "report1_printIFrame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=41&name=report1&reportFileName=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&cachedId=A_11895585&srcType=file&savePrintSetup=no&mirror=no&reportParamsId=146286&t_i_m_e=1595920439222&needSelectPrinter=no";
+	}
+</script>
+<script language="javascript">
+	function report1_pdfPrint() {
+		window.open( "https://zkreport.sceea.cn/report/raqsoft/pdfPrint.jsp?src=https%3A%2F%2Fzkreport.sceea.cn%2Freport%2FreportServlet%3Faction%3D6%26file%3D%252Fusr%252Flocal%252Freport%252Fwebapps%252Freport%252FWEB-INF%252Fclasses%252Freport%252Fexam%252Ftk%252Ftkbsbkzkz%252Fview.rpx%26columns%3D0%26srcType%3Dfile%26cachedId%3DA_11895585%26reportParamsId%3D146286%26t_i_m_e%3D1595920439221%26print%3D1","report1_pdfprint" );
+	}
+	function report1_directPdfPrint() {
+		$( "#report1_printIFrame").attr("src","https://zkreport.sceea.cn/report/raqsoft/pdfjs/pdfDirectPrint.jsp?src=https%3A%2F%2Fzkreport.sceea.cn%2Freport%2FreportServlet%3Faction%3D6%26file%3D%252Fusr%252Flocal%252Freport%252Fwebapps%252Freport%252FWEB-INF%252Fclasses%252Freport%252Fexam%252Ftk%252Ftkbsbkzkz%252Fview.rpx%26columns%3D0%26srcType%3Dfile%26cachedId%3DA_11895585%26reportParamsId%3D146286%26t_i_m_e%3D1595920439221%26print%3D1");
+	}
+</script>
+<iframe name="report1_printIFrame" id="report1_printIFrame" src="./mainview_files/reportServlet(2).html" style="position:absolute;left:-100px;top:-100px" width="50" height="50"></iframe>
+<script language="javascript">
+	function report1_directPrint() {
+		document.getElementById( "report1_printIFrame" ).src = "https://zkreport.sceea.cn/report/reportServlet?action=30&name=report1&reportFileName=%2Fusr%2Flocal%2Freport%2Fwebapps%2Freport%2FWEB-INF%2Fclasses%2Freport%2Fexam%2Ftk%2Ftkbsbkzkz%2Fview.rpx&cachedId=A_11895585&srcType=file&savePrintSetup=no&appletJarName=raqsoftReportApplet.jar&needPrintPrompt=no&needSelectPrinter=no&mirror=no&reportParamsId=146286&t_i_m_e=1595920439222";
+	}
+</script>
+<div id="report1_reportDiv" style="display:inline-block;text-align:center;position:relative;padding:0px;">
+<style id="report1_style">
+	.report1_1 { text-align:left;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_2 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_3 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_4 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_5 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_6 { text-align:left;vertical-align:middle;font-family:宋体;font-size:9px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;line-height:13px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_7 { text-align:left;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_8 { text-align:left;vertical-align:middle;font-family:Dialog;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_9 { text-align:left;vertical-align:middle;font-family:宋体;font-size:9px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;line-height:13px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_10 { text-align:left;vertical-align:middle;font-family:Dialog;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_11 { text-align:left;vertical-align:bottom;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_12 { text-align:left;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_13 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_14 { text-align:center;vertical-align:middle;font-family:宋体;font-size:9px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;line-height:13px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_15 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_16 { text-align:left;vertical-align:middle;font-family:宋体;font-size:9px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_17 { text-align:left;vertical-align:top;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_18 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_19 { text-align:justify;text-justify:distribute;vertical-align:top;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;}
+	.report1_20 { text-align:left;vertical-align:middle;font-family:宋体;font-size:12px;color:#FF0000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;line-height:17px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_21 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_22 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_23 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;line-height:17px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_24 { text-align:right;vertical-align:middle;font-family:宋体;font-size:12px;color:#FF0000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;line-height:17px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_25 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;line-height:17px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_26 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;line-height:17px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_27 { text-align:center;vertical-align:middle;font-family:宋体;font-size:24px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_28 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_29 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:none;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_30 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;line-height:17px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_31 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_32 { text-align:left;vertical-align:middle;font-family:宋体;font-size:9px;color:#000000;font-weight:normal;font-style:normal;text-decoration:none;border-left-style:solid;border-left-width:1px;border-left-color:#000000;border-top-style:solid;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#000000;background-color:transparent;line-height:13px;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+	.report1_33 { text-align:center;vertical-align:middle;font-family:宋体;font-size:12px;color:#000000;font-weight:bold;font-style:normal;text-decoration:none;border-left-style:none;border-left-width:1px;border-left-color:#000000;border-top-style:none;border-top-width:1px;border-top-color:#000000;border-right-style:solid;border-right-width:1px;border-right-color:#000000;border-bottom-style:none;border-bottom-width:1px;border-bottom-color:#000000;background-color:#FFFFFF;white-space:nowrap;overflow:hidden;word-break:keep-all;}
+</style>
+<table id="report1" cellspacing="0" cellpadding="0" style="width:524px;table-layout:fixed;margin:auto;border-collapse:collapse">
+	<colgroup>
+		<col style="width:23px;">
+		<col style="width:24px;">
+		<col style="width:74px;">
+		<col style="width:41px;">
+		<col style="width:55px;">
+		<col style="width:116px;">
+		<col style="width:41px;">
+		<col style="width:45px;">
+		<col style="width:45px;">
+		<col style="width:25px;">
+		<col style="width:20px;">
+		<col style="width:15px;">
+	</colgroup>
+	<tbody><tr rn="1" style="height:24px;">
+		<td colspan="12" class="report1_31">四川省高等教育第201次自学考试准考证</td>
+	</tr>
+	<tr rn="2" style="height:17px;">
+		<td colspan="12" class="report1_13"></td>
+	</tr>
+	<tr rn="3" style="height:18px;">
+		<td class="report1_5"></td>
+		<td class="report1_1"></td>
+		<td rowspan="2" class="report1_17">姓    名：</td>
+		<td rowspan="2" colspan="3" class="report1_19">李苗苗</td>
+		<td class="report1_1"></td>
+		<td rowspan="6" colspan="3" class="report1_1"><img src="./mainview_files/reportServlet(1)" width="81" height="107" border="no"></td>
+		<td class="report1_10"></td>
+		<td class="report1_8"></td>
+	</tr>
+	<tr rn="4" style="height:18px;">
+		<td class="report1_5"></td>
+		<td class="report1_1"></td>
+		<td class="report1_1"></td>
+		<td class="report1_10"></td>
+		<td class="report1_8"></td>
+	</tr>
+	<tr rn="5" style="height:18px;">
+		<td class="report1_5"></td>
+		<td class="report1_1"></td>
+		<td rowspan="2" class="report1_12">准考证号：</td>
+		<td rowspan="2" colspan="3" class="report1_12">070117418327</td>
+		<td class="report1_1"></td>
+		<td class="report1_10"></td>
+		<td class="report1_8"></td>
+	</tr>
+	<tr rn="6" style="height:18px;">
+		<td class="report1_5"></td>
+		<td class="report1_1"></td>
+		<td class="report1_1"></td>
+		<td class="report1_10"></td>
+		<td class="report1_8"></td>
+	</tr>
+	<tr rn="7" style="height:18px;">
+		<td class="report1_5"></td>
+		<td class="report1_1"></td>
+		<td rowspan="2" class="report1_11">身份证号：</td>
+		<td rowspan="2" colspan="3" class="report1_11">510623199802042527</td>
+		<td class="report1_1"></td>
+		<td class="report1_10"></td>
+		<td class="report1_8"></td>
+	</tr>
+	<tr rn="8" style="height:18px;">
+		<td class="report1_5"></td>
+		<td class="report1_1"></td>
+		<td class="report1_1"></td>
+		<td class="report1_10"></td>
+		<td class="report1_8"></td>
+	</tr>
+	<tr rn="9" style="height:11px;">
+		<td class="report1_29"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_18"></td>
+		<td class="report1_21"></td>
+		<td class="report1_21"></td>
+		<td class="report1_33"></td>
+	</tr>
+	<tr rn="10" style="height:25px;">
+		<td class="report1_26"></td>
+		<td colspan="3" class="report1_4">考试时间</td>
+		<td class="report1_4">课程代码</td>
+		<td class="report1_23">课程名称</td>
+		<td colspan="2" class="report1_23">考点名称</td>
+		<td class="report1_23">考场号</td>
+		<td colspan="2" class="report1_25">座位号</td>
+		<td class="report1_26"></td>
+	</tr>
+	<tr rn="11" style="height:18px;">
+		<td rowspan="4" class="report1_30"></td>
+		<td colspan="3" class="report1_14">2020年08月01日 09:00-11:30</td>
+		<td class="report1_14">****</td>
+		<td class="report1_32" style="text-align:center;">****</td>
+		<td colspan="2" class="report1_9" style="text-align:center;">****</td>
+		<td class="report1_14">**</td>
+		<td colspan="2" class="report1_14">**</td>
+		<td class="report1_30"></td>
+	</tr>
+	<tr rn="12" style="height:18px;">
+		<td colspan="3" class="report1_14">2020年08月01日 14:30-17:00</td>
+		<td class="report1_14">****</td>
+		<td class="report1_32" style="text-align:center;">****</td>
+		<td colspan="2" class="report1_9" style="text-align:center;">****</td>
+		<td class="report1_14">**</td>
+		<td colspan="2" class="report1_14">**</td>
+		<td class="report1_30"></td>
+	</tr>
+	<tr rn="13" style="height:18px;">
+		<td colspan="3" class="report1_14">2020年08月02日 09:00-11:30</td>
+		<td class="report1_14">00160</td>
+		<td class="report1_32" style="text-align:left;">审计学</td>
+		<td colspan="2" class="report1_9" style="text-align:left;">绵阳市安昌路小学</td>
+		<td class="report1_14">6</td>
+		<td colspan="2" class="report1_14">30</td>
+		<td class="report1_30"></td>
+	</tr>
+	<tr rn="14" style="height:18px;">
+		<td colspan="3" class="report1_14">2020年08月02日 14:30-17:00</td>
+		<td class="report1_14">****</td>
+		<td class="report1_32" style="text-align:center;">****</td>
+		<td colspan="2" class="report1_9" style="text-align:center;">****</td>
+		<td class="report1_14">**</td>
+		<td colspan="2" class="report1_14">**</td>
+		<td class="report1_30"></td>
+	</tr>
+	<tr rn="15" style="height:15px;">
+		<td class="report1_22"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="16" style="height:28px;">
+		<td class="report1_22"></td>
+		<td colspan="10" class="report1_7">注意事项</td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="17" style="height:158px;">
+		<td class="report1_22"></td>
+		<td colspan="10" class="report1_6">    1.考生凭《准考证》和有效《身份证》参加考试。<br>    2.考生入场，除2B铅笔、0.5毫米的黑色墨迹签字笔、直尺、圆规、三角板、橡皮外（其他科目有特殊规定的除<br>外），其他任何物品不准带入考场。严禁携带手机等各种通信工具、电子存储记忆录放设备以及涂改液、修正带等物品进<br>入考场。允许使用计算器的课程，计算器也不得有存储功能。<br>    3.考生入场后，要按号入座，将本人《准考证》和有效《身份证》放在课桌上以便核验。考生领到答题卡和试卷后，<br>应在指定位置准确清楚填写（涂）姓名、课程代码、课程名称、准考证号、考生笔记确认、座位号等栏目。凡漏填、错填<br>或字迹不清的答题卡无效。<br>    4.统一开考信号发出后才能开始答题。<br>    5.迟到15分钟后不准进入考点参加当科课程考试，交卷出场时间不得早于课程考试结束前30分钟，考生交卷签名出<br>场后不得再进场续考，也不得在考场附近逗留或交谈。<br>    6.考生须在答题卡规定的区域按小题号顺序答题。不准用规定以外的笔和纸答题，不准在答题卡上做任何标记。<br>    7.若考生在考试前遗失了身份证，可以到公安机关办理临时身份证参加考试。</td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="18" style="height:28px;">
+		<td class="report1_22"></td>
+		<td colspan="10" class="report1_7"><br>考试提示</td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="19" style="height:29px;">
+		<td class="report1_22"></td>
+		<td colspan="10" class="report1_6">    自学考试执行教育部33号令，如不遵守考场纪律，不服从考试工作人员管理，有违纪、作弊等行为的，将按照《国家<br>教育考试违规处理办法》进行处理并记入考生诚信考试电子档案。若涉嫌违法，由考点移交公安机关。</td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="20" style="height:36px;">
+		<td class="report1_22"></td>
+		<td colspan="4" class="report1_7">考点地址</td>
+		<td class="report1_24"></td>
+		<td colspan="5" class="report1_20">本准考证用普通A4纸打印，严<br>禁伪造、变造或擅自涂改。</td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="21" style="height:18px;">
+		<td class="report1_22"></td>
+		<td colspan="10" class="report1_16">    绵阳市安昌路小学：绵阳市涪城区安昌路57号</td>
+		<td class="report1_2"></td>
+	</tr>
+	<tr rn="22" style="height:20px;">
+		<td class="report1_28"></td>
+		<td colspan="10" class="report1_21"><br>四川省教育考试院   制</td>
+		<td class="report1_15"></td>
+	</tr>
+	<tr rn="23" style="height:20px;;display:none">
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+		<td class="report1_3"></td>
+	</tr>
+	<tr rn="24" style="height:134px;;display:none">
+	</tr>
+</tbody></table></div>
+<form id="report1_ajaxTurnpageForm" method="post" action="https://zkreport.sceea.cn/report/reportServlet?action=33" style="display:none">
+	<input type="hidden" name="reportName" value="report1">
+	<input type="hidden" name="reportFileName" value="/usr/local/report/webapps/report/WEB-INF/classes/report/exam/tk/tkbsbkzkz/view.rpx">
+	<input type="hidden" name="needPagedScroll" value="no">
+	<input type="hidden" name="width" value="0">
+	<input type="hidden" name="height" value="0">
+	<input type="hidden" name="scrollWidth" value="100%">
+	<input type="hidden" name="scrollHeight" value="100%">
+	<input type="hidden" name="scrollBorder" value="null">
+	<input type="hidden" name="generateCellId" value="no">
+	<input type="hidden" name="scale" value="1.0">
+	<input type="hidden" id="report1_currpage_input" name="currPage" value="1">
+	<input type="hidden" id="report1_totalpage_input" name="totalPage" value="1">
+	<input type="hidden" id="report1_cachedId" name="cachedId" value="A_11895585">
+</form>
+
+	</div></div>
+<div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+</div></div>
+<script language="javascript">
+	//设置分页显示值
+	try {
+		document.getElementById( "t_page_span" ).innerHTML = getPageCount( "report1" );
+		document.getElementById( "report1_currPage" ).innerHTML = getCurrPage( "report1" );
+	}catch(e){}
+	document.getElementById( "mengban" ).style.display = "none";
+	document.getElementById( "reportArea" ).style.display = "";
+</script>
+
+
+
+<div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div><div class="panel window" style="display: none; left: 867px; top: 441px;"><div class="panel-header panel-header-noborder window-header" style="width: 175px;"><div class="panel-title">导出Excel设置 -- 仅限测试评估</div><div class="panel-tool"><a href="javascript:;" class="panel-tool-close"></a></div></div><div id="report1_excel_dlg" class="easyui-dialog panel-body panel-body-noborder window-body" title="" style="padding: 10px; width: 153px;" data-options="modal:true,closed:true,href:&#39;https://zkreport.sceea.cn/report/reportServlet?action=4&amp;reportName=report1&amp;excelFormat=xls&#39;,buttons: [{text:&#39;确定&#39;,iconCls:&#39;icon-ok&#39;,handler:function(){excelOk();}},{text:&#39;取消&#39;,iconCls:&#39;icon-cancel&#39;,handler:function(){$(&#39;#report1_excel_dlg&#39;).dialog(&#39;close&#39;);}}],onOpen:function(){try{excel_pageOpened();}catch(ex){}}"></div><div class="dialog-button" style="width: 163px;"><a href="javascript:;" class="l-btn l-btn-small" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">确定</span><span class="l-btn-icon icon-ok">&nbsp;</span></span></a><a href="javascript:;" class="l-btn l-btn-small" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">取消</span><span class="l-btn-icon icon-cancel">&nbsp;</span></span></a></div></div><div class="window-shadow" style="display: none; left: 867px; top: 441px; width: 187px; height: 94px;"></div><div class="window-mask" style="display:none"></div><div class="panel window" style="display: none; left: 873px; top: 441px;"><div class="panel-header panel-header-noborder window-header" style="width: 162px;"><div class="panel-title">导出Pdf设置 -- 仅限测试评估</div><div class="panel-tool"><a href="javascript:;" class="panel-tool-close"></a></div></div><div id="report1_pdf_dlg" class="easyui-dialog panel-body panel-body-noborder window-body" title="" style="padding: 10px; width: 140px;" data-options="modal:true,closed:true,href:&#39;https://zkreport.sceea.cn/report/reportServlet?action=25&amp;reportName=report1&#39;,buttons: [{text:&#39;确定&#39;,iconCls:&#39;icon-ok&#39;,handler:function(){pdfOk();}},{text:&#39;取消&#39;,iconCls:&#39;icon-cancel&#39;,handler:function(){$(&#39;#report1_pdf_dlg&#39;).dialog(&#39;close&#39;);}}],onOpen:function(){try{pdf_pageOpened();}catch(ex){}}"></div><div class="dialog-button" style="width: 150px;"><a href="javascript:;" class="l-btn l-btn-small" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">确定</span><span class="l-btn-icon icon-ok">&nbsp;</span></span></a><a href="javascript:;" class="l-btn l-btn-small" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">取消</span><span class="l-btn-icon icon-cancel">&nbsp;</span></span></a></div></div><div class="window-shadow" style="display: none; left: 873px; top: 441px; width: 174px; height: 94px;"></div><div class="window-mask" style="display:none"></div></body></html>

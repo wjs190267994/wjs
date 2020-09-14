@@ -1,0 +1,407 @@
+function _setInnerHTML( el, htmlCode ) {
+	$(el).html( htmlCode );
+}  
+
+function getPageCount( reportName ) {
+	var tpbox = document.getElementById( reportName + "_totalpage_input" );
+	return parseInt( tpbox.value );
+}
+
+function getCurrPage( reportName ) {
+	var cpbox = document.getElementById( reportName + "_currpage_input" );
+	return parseInt( cpbox.value );
+}
+
+function toPage( reportName, pageno ) {
+	var form = document.getElementById( reportName + "_ajaxTurnpageForm" );
+	var cbox = document.getElementById( reportName + "_currpage_input" );
+	var oldpage = cbox.value;
+	cbox.value = pageno + "";
+	var url = $(form).attr( "action" );
+	var params = $(form).serialize();
+	cbox.value = oldpage;
+	$.post( url, params, function( data ) {
+		if( data.indexOf( "error:" ) == 0 ) {
+			alert( data );
+			return;
+		}
+		var div = document.getElementById( reportName + "_reportDiv" );
+		_setInnerHTML( div, data );
+		var cpbox = document.getElementById( reportName + "_currpage_input" );
+		cpbox.value = pageno + "";
+		var cpspan = document.getElementById( reportName + "_currPage" );
+		if( cpspan != null ) cpspan.innerHTML = pageno + "";
+		var pageCount = getPageCount( reportName );
+		var firstspan = document.getElementById( reportName + "_first" );
+		var prevspan = document.getElementById( reportName + "_prev" );
+		var nextspan = document.getElementById( reportName + "_next" );
+		var lastspan = document.getElementById( reportName + "_last" );
+		if( pageno == 1 ) {
+			if( firstspan != null ) firstspan.style.display = "none";
+			if( prevspan != null ) prevspan.style.display = "none";
+		}
+		else {
+			if( firstspan != null ) firstspan.style.display = "";
+			if( prevspan != null ) prevspan.style.display = "";
+		}
+		if( pageno == pageCount ) {
+			if( nextspan != null ) nextspan.style.display = "none";
+			if( lastspan != null ) lastspan.style.display = "none";
+		}
+		else {
+			if( nextspan != null ) nextspan.style.display = "";
+			if( lastspan != null ) lastspan.style.display = "";
+		}
+	}, "text");
+}
+	
+function prevPage( reportName ) {
+	var currpage = getCurrPage( reportName );
+	if( currpage <= 1 ) return;
+	toPage( reportName, currpage - 1 );
+}
+
+function nextPage( reportName ) {
+	var currpage = getCurrPage( reportName );
+	var totalpage = getPageCount( reportName );
+	if( currpage >= totalpage ) return;
+	toPage( reportName, currpage + 1 );
+}
+
+function jumpToPage( reportName, pno ) {
+	var pageno = parseInt( pno );
+	var totalpage = getPageCount( reportName );
+	if( pageno < 1 || pageno > totalpage ) return;
+	toPage( reportName, pageno );
+}
+
+function exportExcel( reportName ) {
+	if( getPageCount( reportName ) == 0 ) return;
+	eval( reportName + "_saveAsExcel()" );
+}
+
+function exportPdf( reportName ) {
+	if( getPageCount( reportName ) == 0 ) return;
+	eval( reportName + "_saveAsPdf()" );
+}
+
+function exportWord( reportName ) {
+	if( getPageCount( reportName ) == 0 ) return;
+	eval( reportName + "_saveAsWord()" );
+}
+
+function exportText( reportName ) {
+	if( getPageCount( reportName ) == 0 ) return;
+	eval( reportName + "_saveAsText()" );
+}
+
+function exportMht( reportName ) {
+	if( getPageCount( reportName ) == 0 ) return;
+	eval( reportName + "_saveAsMht()" );
+}
+
+function save2server( reportName, saveClass ) {
+	eval( reportName + "_save2server('" + saveClass + "')" );
+}
+
+function printReport( reportName ) {
+	eval( reportName + "_print()" );
+}
+
+function directPrintReport( reportName ) {
+	eval( reportName + "_directPrint()" );
+}
+
+function flashPrintReport( reportName ) {
+	eval( reportName + "_flashPrint()" );
+}
+
+function directFlashPrintReport( reportName ) {
+	eval( reportName + "_directFlashPrint()" );
+}
+
+function openPrintWindow( url, name, iWidth, iHeight ){
+	var iTop = ( window.screen.height - iHeight ) / 2 - 30; //获得窗口的垂直位置;
+	var iLeft = ( window.screen.availWidth - iWidth ) / 2;  //获得窗口的水平位置;
+	window.open( url, name, 'height='+iHeight+',width='+iWidth+',top='+iTop+',left='+iLeft+',toolbar=no,menubar=no,scrollbars=auto,resizeable=yes,location=no,status=no');
+}
+
+function openPrintWindow1( url, name, iWidth, iHeight ){  //直接打印窗口
+	var iTop = ( window.screen.height - iHeight ) / 2 - 30; //获得窗口的垂直位置;
+	var iLeft = ( window.screen.availWidth - iWidth ) / 2;  //获得窗口的水平位置;
+	var win = window.open( url, name, 'height='+iHeight+',width='+iWidth+',top='+iTop+',left='+iLeft+',toolbar=no,menubar=no,scrollbars=auto,resizeable=yes,location=no,status=no');
+	//win.moveTo( 10000, 10000 );   //现在的浏览器都不支持把窗口放屏幕外
+}
+
+function printWindowOpened( reportName ) {
+	/*var dlg = $('#' + reportName + '_flash_dlg');
+	var ww = document.body.clientWidth; 
+	var hh = document.body.clientHeight;
+	dlg.dialog('resize',{width:ww,height:hh});
+	dlg.dialog('move',{ top:$(document).scrollTop(),left:$(document).scrollLeft()});	*/
+	var xgsj = "";
+	try{ xgsj = collectXGData( reportName );}catch(e){}
+	return xgsj;
+}
+
+function pdfPrintReport( reportName ) {
+	eval( reportName + "_pdfPrint()" );
+}
+
+function directPdfPrintReport( reportName ) {
+	eval( reportName + "_directPdfPrint()" );
+	showToast();
+}
+
+//以下是大报表专用
+function fetchData( reportName ) {
+	var form = document.getElementById( reportName + "_ajaxTurnpageForm" );
+	var cmdbox = document.getElementById( reportName + "_cmd" );
+	if( cmdbox == null ) return;  //可能是正在查询，cmdbox不存在了
+	cmdbox.value = "fetch";
+	var url = $(form).attr( "action" );
+	var params = $(form).serialize();
+	cmdbox.value = "";
+	$.post( url, params, function( data ) {
+		if( data.indexOf( "error:" ) == 0 ) {
+			alert( data );
+			return;
+		}
+		var pos = data.indexOf( "," );
+		var rows = parseInt( data.substring( 0, pos ) );
+		var finish = data.substring( pos + 1 );
+		var rppbox = document.getElementById( reportName + "_rowsPerPage" );
+		var rpp = parseInt( rppbox.value );
+		var pages = Math.floor( rows / rpp );
+		if( rows % rpp != 0 ) pages++;
+		document.getElementById( reportName + "_totalpage_input" ).value = pages + "";
+		if( pages == 0 ) pages = 1;
+		var tpspan = document.getElementById( reportName + "_totalPage" );
+		if( tpspan != null ) tpspan.innerHTML = pages + "";
+		var trspan = document.getElementById( reportName + "_totalRecords" );
+		if( trspan != null ) trspan.innerHTML = rows + "";
+		var t = 2000;
+		if( finish == "0" ) {
+			try{ t = fetchInterval;}catch(ex){}
+		}
+		else {   //取完数了
+			t = 60 * 1000;
+		}
+		setTimeout( "fetchData('" + reportName + "')", t );
+	}, "text");
+}
+
+function exportDialogOpened( reportName ) {
+	var dlg = $('#' + reportName + '_export_dlg');
+	var ww = 500; 
+	var hh = 110;
+	dlg.dialog('resize',{width:ww,height:hh});
+	dlg.dialog('move',{top:$(document).scrollTop() + (document.body.clientHeight - hh )*0.5,left:$(document).scrollLeft() + (document.body.clientWidth - ww )*0.5});
+	document.getElementById( reportName + "_jindu" ).innerHTML = "Start......";
+	$("#" + reportName + "_ceb").linkbutton('disable');
+	getExportTaskId( reportName );
+}
+
+function getExportTaskId( reportName ) {
+	var form = document.getElementById( reportName + "_ajaxTurnpageForm" );
+	var cmdbox = document.getElementById( reportName + "_cmd" );
+	if( cmdbox == null ) return;  //可能是正在查询，cmdbox不存在了
+	cmdbox.value = "taskid";
+	var url = $(form).attr( "action" );
+	var params = $(form).serialize();
+	cmdbox.value = "";
+	$.post( url, params, function( data ) {
+		if( data.indexOf( "error:" ) == 0 ) {
+			alert( data );
+			return;
+		}
+		document.getElementById( reportName + "_taskId" ).value = data;
+		$("#" + reportName + "_ceb").linkbutton('enable');
+		freshExportJindu( reportName );
+	}, "text");
+}
+
+function freshExportJindu( reportName ) {
+	var form = document.getElementById( reportName + "_ajaxTurnpageForm" );
+	var cmdbox = document.getElementById( reportName + "_cmd" );
+	if( cmdbox == null ) return;  //可能是正在查询，cmdbox不存在了
+	cmdbox.value = "jindu";
+	var url = $(form).attr( "action" );
+	var params = $(form).serialize();
+	cmdbox.value = "";
+	$.post( url, params, function( data ) {
+		var tt = 3000;
+		try{ tt = jinduInterval; }catch(ex){}
+		if( data.indexOf( "error:" ) == 0 ) {
+			setTimeout( "freshExportJindu('" + reportName + "')", tt );
+			return;
+		}
+		if( data.indexOf( "export_error:" ) == 0 ) {
+			$("#" + reportName + "_export_dlg").dialog( "close" );
+			alert( data.substring( 13 ) );
+			return;
+		}
+		if( data == "over" ) {
+			$("#" + reportName + "_export_dlg").dialog( "close" );
+			try{ exportExcelOver();}catch(ex){}
+			return;
+		}
+		var jddiv = document.getElementById( reportName + "_jindu" );
+		jddiv.innerHTML = data;
+		setTimeout( "freshExportJindu('" + reportName + "')", tt );
+	}, "text");
+}
+
+function cancelExport( reportName ) {
+	var form = document.getElementById( reportName + "_ajaxTurnpageForm" );
+	var cmdbox = document.getElementById( reportName + "_cmd" );
+	cmdbox.value = "cancel";
+	var url = $(form).attr( "action" );
+	var params = $(form).serialize();
+	cmdbox.value = "";
+	$.post( url, params, function( data ) {
+		if( data.indexOf( "error:" ) == 0 ) {
+			alert( data );
+			return;
+		}
+	}, "text");
+}
+
+//报表自适应函数
+function reportMatchSize( rongqi, reportdiv, mode ) {
+	var W = rongqi.clientWidth || rongqi.innerWidth;
+	if( mode == null || mode == "0" ) {   //处理列宽自适应
+		var pos = reportdiv.id.lastIndexOf( "_" );
+		var tableId = reportdiv.id.substring( 0, pos );
+		var tbl = document.getElementById( tableId );
+		var tw = tbl.initW;
+		if( tw == null ) {
+			tw = tbl.style.width;
+			tbl.initW = tw;
+		}
+		tw = parseInt( tw );
+		if( tw >= W ) return;
+		var dw = W - tw;
+		var cws = 0;
+		for( var col = 1; ; col++ ) {
+			var c = document.getElementById( tableId + "_col" + col );
+			if( c == null ) break;
+			if( c.getAttribute( "autoW" ) != null ) {
+				var cw = c.initW;
+				if( cw == null ) {
+					cw = c.style.width;
+					c.initW = cw;
+				}
+				cws += parseInt( cw );
+			}
+		}
+		tbl.style.width = W + "px";
+		for( var col = 1; ; col++ ) {
+			var c = document.getElementById( tableId + "_col" + col );
+			if( c == null ) break;
+			if( c.getAttribute( "autoW" ) != null ) {
+				var cw = c.initW;
+				if( cw == null ) cw = c.style.width;
+				cw = parseInt( cw );
+				cw += Math.floor( cw / cws * dw );
+				c.style.width = cw + "px";
+			}
+		}
+	}
+	else {
+		if( mode != 1 && mode != 2 && mode != 3 && mode != 4 && mode != 5 && mode != 6 && mode != 7 ) return;
+		rongqi.style.textAlign = "left";
+		matchTo( reportdiv, 1.0, 1.0 );
+		var H = rongqi.clientHeight || rongqi.innerHeight;
+		var w = reportdiv.offsetWidth;
+		var h = reportdiv.offsetHeight;
+		if( mode == "1" ) {   //始终按宽
+			matchMode( rongqi, reportdiv, W, H, w, h, "w" );
+		}
+		else if( mode == "2" ) {   //始终按高
+			matchMode( rongqi, reportdiv, W, H, w, h, "h" );
+		}
+		else if( mode == "3" ) {   //竖屏按高，横屏按宽
+			if( W < H ) {
+				matchMode( rongqi, reportdiv, W, H, w, h, "h" );
+			}
+			else {
+				matchMode( rongqi, reportdiv, W, H, w, h, "w" );
+			}
+		}
+		else if( mode == "4" ) {   //竖屏按宽，横屏按高
+			if( W > H ) {
+				matchMode( rongqi, reportdiv, W, H, w, h, "h" );
+			}
+			else {
+				matchMode( rongqi, reportdiv, W, H, w, h, "w" );
+			}
+		}
+		else if( mode == "5" ) {   //竖屏按高宽均适应，横屏不需自适应
+			if( W < H ) {
+				matchMode( rongqi, reportdiv, W, H, w, h, "wh" );
+			}
+			else {
+				rongqi.style.textAlign = "center";
+				rongqi.style.overflowX = "auto";
+				rongqi.style.overflowY = "auto";
+			}
+		}
+		else if( mode == "6" ) {   //竖屏不需自适应，横屏按高宽均适应
+			if( W > H ) {
+				matchMode( rongqi, reportdiv, W, H, w, h, "wh" );
+			}
+			else {
+				rongqi.style.textAlign = "center";
+				rongqi.style.overflowX = "auto";
+				rongqi.style.overflowY = "auto";
+			}
+		}
+		else if( mode == "7" ) {
+			matchMode( rongqi, reportdiv, W, H, w, h, "wh" );
+		}
+	}
+}
+
+function matchMode( rongqi, reportdiv, W, H, w, h, mode ) {
+	var scalex = 1.0, scaley = 1.0;
+	var ox = 0;
+	if( mode == "w" ) {   //按宽
+		scalex = W * 1.0 / w;
+		if( h * scalex > H ) {
+			rongqi.style.overflowY = "scroll";
+			W = rongqi.clientWidth;
+			scalex = W * 1.0 / w;
+		}
+		scaley = scalex;
+		rongqi.style.overflowX = "hidden";
+		rongqi.style.overflowY = "auto";
+	}
+	if( mode == "h" ) {  //按高
+		scaley = H * 1.0 / h;
+		if( w * scaley > W ) {
+			rongqi.style.overflowX = "scroll";
+			H = rongqi.clientHeight;
+			scaley = H * 1.0 / h;
+		}
+		if( w * scaley < W ) {
+			ox = ( W - Math.floor( w * scaley ) ) / 2 / ( 1 - scaley );
+		}
+		scalex = scaley;
+		rongqi.style.overflowY = "hidden";
+		rongqi.style.overflowX = "auto";
+	}
+	if( mode == "wh" ) {  //按高宽
+		scalex = W * 1.0 / w;
+		scaley = H * 1.0 / h;
+		rongqi.style.overflowX = "hidden";
+		rongqi.style.overflowY = "hidden";
+	}
+	matchTo( reportdiv, scalex, scaley, ox );
+}
+
+function matchTo( matchedObj, scalex, scaley, originx ) {
+	matchedObj.style.margin = "";
+	if( originx == null ) originx = 0;
+	matchedObj.style.cssText += ';transform: scale(' + scalex + ',' + scaley + ');transform-origin:' + originx + 'px 0px 0px;-webkit-transform: scale(' + scalex + ',' + scaley + ');-webkit-transform-origin:' + originx + 'px 0px 0px;';
+}
