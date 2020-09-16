@@ -7,7 +7,7 @@
      </div>
      <div class="goodslist" v-for="item in goodList.detailImage">
         <div class="key">{{item.key}}</div>
-        <img v-for="img in item.list" :src="img" alt="" @load="imgLoad">
+        <img v-for="img in item.list" :src="img" alt="" @load="imgLoad1">
      </div>
   </div>
 </template>
@@ -33,8 +33,11 @@ export default {
     methods:{
         imgLoad(){
             if(++this.count == this.imglength) {
-                this.$emit("detailImgLoad");
+                // this.$emit("detailImgLoad");
             }
+        },
+        imgLoad1(){
+            this.$emit("detailImgLoad");
         }
     },
     watch:{

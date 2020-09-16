@@ -51,6 +51,7 @@ export default {
         },
         refresh(){
             this.scroll& this.scroll.refresh();
+            console.log('detail');
         },
         scrollTo(x,y,esy){
              this.scroll&this.scroll.scrollTo(x,y,esy);

@@ -7,6 +7,8 @@
       <detailshopInfo :shopinfo='shopInfo'></detailshopInfo>
       <detailgoodsInfo :goodList="goodsList" @detailImgLoad="refesh"></detailgoodsInfo>
       <detaparamsInfo :paramsInfo='paramsInfo'></detaparamsInfo>
+      <detailrate :rate='rateDate' @detailImg="refesh"></detailrate>
+      <goodlist :items='recommend'></goodlist>
     </detailscroll>
     <backup @click.native="backup" v-if="isShowback"></backup>
   </div>
@@ -19,12 +21,16 @@ import detailbaseInfo from './detailChildC/detailbaseInfo'
 import detailshopInfo from './detailChildC/detailshopInfo'
 import detailgoodsInfo from './detailChildC/detailgoodsInfo'
 import detaparamsInfo from './detailChildC/detailparamsInfo'
-
+import detailrate from './detailChildC/detailusertare'
 
 import detailscroll  from '@/components/content/scroll/scroll'
+import goodlist  from '@/components/content/GoodList/goodlist'
 import backup from '@/components/content/backup/backup'
 
-import {getDetail,GoodsInfo,Params} from '@/network/detaildata'
+
+import {getDetail,GoodsInfo,Params,getRecommed} from '@/network/detaildata'
+
+import {debounds} from '@/assets/Tool/tool.js'
 export default {
     name:'detail',
     data(){
@@ -35,13 +41,20 @@ export default {
             shopInfo:{},
             goodsList:{},
             paramsInfo:{},
+            rateDate:{},
+            fun:null,
+            recommend:[],
             isShowback:false
         }
     },
+    mounted() {
+     this.fun =  debounds( this.$refs.scroll.refresh,0);
+    },
     methods:{
       refesh(){
-         this.$refs.scroll.refresh();
-         console.log('refresh');
+        //  this.$refs.scroll.refresh();
+        this.fun();
+        //  console.log('refresh333');
       },
       backup(){
         this.$refs.scroll.backup();
@@ -59,12 +72,15 @@ export default {
       detailgoodsInfo,
       detaparamsInfo,
       detailscroll,
+      goodlist,
+      detailrate,
       backup
     },
     created(){
         this.iid = this.$route.query.iid  
 
         getDetail(this.iid).then(res => {
+
           const data = res.result;
           this.Topimages = data.itemInfo.topImages;
           console.log(data);
@@ -75,6 +91,14 @@ export default {
           this.goodsList = data.detailInfo;//商品详细数据
 
           this.paramsInfo  = new Params(data.itemParams);//参数数据
+
+          if(data.cRate != 0) {
+            this.rateDate = data.rate.list[0]; // 用户评论数据
+          }
+        })
+        getRecommed().then(res =>{
+         this.recommend = res.data.list;
+         console.log(this.recommend)
         })
     }
 }

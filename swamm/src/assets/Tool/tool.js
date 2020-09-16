@@ -9,5 +9,4 @@ export function debounds(func,delay) {
          }, delay);
         
      }
-   
 }

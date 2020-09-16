@@ -8,6 +8,11 @@ export function getDetail(iid) {
         }
     })
 }
+export function getRecommed(){
+     return requestNew({
+        url:'/recommend'
+    })
+}
 export function GoodsInfo(itemInfo,columns,services){
     this.title = itemInfo.title;
     this.desc = itemInfo.desc;
