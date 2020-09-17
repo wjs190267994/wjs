@@ -1,14 +1,14 @@
 <template>
   <div id="detail">
-    <dnavbar class="dnavbar"></dnavbar>
+    <dnavbar class="dnavbar" @navClick="dnavbarClick"></dnavbar>
     <detailscroll class="scroll" ref="scroll" @scrollDown="scrollDown" :pullUpLoad='true'>
       <swipe :images="Topimages" class="detailswipe" ></swipe>
       <detailbaseInfo :goods="Goods"></detailbaseInfo>
       <detailshopInfo :shopinfo='shopInfo'></detailshopInfo>
       <detailgoodsInfo :goodList="goodsList" @detailImgLoad="refesh"></detailgoodsInfo>
-      <detaparamsInfo :paramsInfo='paramsInfo'></detaparamsInfo>
-      <detailrate :rate='rateDate' @detailImg="refesh"></detailrate>
-      <goodlist :items='recommend'></goodlist>
+      <detaparamsInfo :paramsInfo='paramsInfo' ref="params"></detaparamsInfo>
+      <detailrate :rate='rateDate' @detailImg="refesh" ref="rate"></detailrate>
+      <goodlist :items='recommend' ref="recommend"></goodlist>
     </detailscroll>
     <backup @click.native="backup" v-if="isShowback"></backup>
   </div>
@@ -44,17 +44,30 @@ export default {
             rateDate:{},
             fun:null,
             recommend:[],
-            isShowback:false
+            isShowback:false,
+            navTooffsetTop:[]
         }
     },
     mounted() {
-     this.fun =  debounds( this.$refs.scroll.refresh,0);
+     this.fun =  debounds( this.$refs.scroll.refresh,100);
+     this.$bus.$on('detailitemimgLoad',()=>{
+       this.fun();
+      // this.$refs.scroll.refresh();
+     });
+    },
+    updated() {
+    
     },
     methods:{
       refesh(){
-        //  this.$refs.scroll.refresh();
         this.fun();
-        //  console.log('refresh333');
+        // this.$refs.scroll.refresh();
+          this.navTooffsetTop = [];
+      this.navTooffsetTop.push(0);
+      this.navTooffsetTop.push(this.$refs.params.$el.offsetTop-60);
+      this.navTooffsetTop.push(this.$refs.rate.$el.offsetTop-60);
+      this.navTooffsetTop.push(this.$refs.recommend.$el.offsetTop-45);
+      console.log(this.navTooffsetTop);
       },
       backup(){
         this.$refs.scroll.backup();
@@ -62,6 +75,10 @@ export default {
 
       scrollDown(op){
         this.isShowback = op.y < -1000? true : false 
+      },
+      dnavbarClick(index){
+        console.log(index);
+        this.$refs.scroll.scrollTo(0,-this.navTooffsetTop[index],200);
       }
     },
     components:{
@@ -83,7 +100,7 @@ export default {
 
           const data = res.result;
           this.Topimages = data.itemInfo.topImages;
-          console.log(data);
+          // console.log(data);
           this.Goods = new GoodsInfo(data.itemInfo,data.columns,data.shopInfo.services);
           // console.log(this.Goods)
           this.shopInfo = data.shopInfo;//店铺信息数据
@@ -96,9 +113,8 @@ export default {
             this.rateDate = data.rate.list[0]; // 用户评论数据
           }
         })
-        getRecommed().then(res =>{
+        getRecommed().then(res =>{//获取推荐数据
          this.recommend = res.data.list;
-         console.log(this.recommend)
         })
     }
 }

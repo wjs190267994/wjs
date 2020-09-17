@@ -38,7 +38,7 @@ export default {
         })
         //监听上啦事件
         this.scroll.on('pullingUp',()=>{
-            console.log('上啦')
+            // console.log('上啦')
             this.$emit('moreLoad')
         })
     },
@@ -51,10 +51,11 @@ export default {
         },
         refresh(){
             this.scroll& this.scroll.refresh();
-            console.log('detail');
+            // console.log('detail');
         },
         scrollTo(x,y,esy){
              this.scroll&this.scroll.scrollTo(x,y,esy);
+             console.log(this.scroll)
         }
     }
 }

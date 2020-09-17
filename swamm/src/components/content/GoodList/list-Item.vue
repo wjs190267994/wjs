@@ -2,9 +2,9 @@
   <div class="list-item" @click="itemclick">
      <img :src="showImg" alt="" @load="imgload">
      <div class="goodinfo">
-         <p>{{item.title}}</p>
-         <span>{{item.price}}</span>
-         <span>{{item.cfav}}</span>
+         <p>{{itemObj.title}}</p>
+         <span>{{itemObj.price}}</span>
+         <span>{{itemObj.cfav}}</span>
      </div>
   </div>
 </template>
@@ -12,7 +12,7 @@
 <script>
 export default {
     props:{
-        item:{
+        itemObj:{
             type:Object,
             default(){
                 return {}
@@ -21,18 +21,22 @@ export default {
     },
     computed: {
         showImg(){
-            return item.image || item.show.img
+            return this.itemObj.image || this.itemObj.show.img
         }
     },
     methods:{
         imgload(){
-           this.$bus.$emit('itemimgLoad');
+            if(this.$route.path.indexOf('/Home')) {
+                 this.$bus.$emit('homeitemimgLoad');
+            }else if(this.$route.path.indexOf('/detail')) {
+                this.$bus.$emit('dateilitemimgLoad');
+            }
         },
         itemclick(){
             this.$router.push({
                 path:"/detail",
                 query:{
-                    iid:this.item.iid
+                    iid:this.itemObj.iid
                 }
             });
         }

@@ -178,7 +178,7 @@ export default {
 
 
     let fun = debounds( this.$refs.scroll.refresh,0);
-    this.$bus.$on('itemimgLoad',()=>{
+    this.$bus.$on('homeitemimgLoad',()=>{
        fun();
     })
   },
@@ -240,9 +240,10 @@ export default {
  activated(){
    this.$refs.scroll.scrollTo(0, this.activeOffsetTop,0);
    this.$refs.scroll.refresh();
+   console.log(this.activeOffsetTop)
  },
  deactivated(){
-   this.activeOffsetTop = this.$refs.scroll.scroll.y
+   this.activeOffsetTop = this.$refs.scroll.scroll.y;
  }
 }
 </script>

@@ -24,6 +24,7 @@ export default {
     methods:{
         itemclick(index) {
             this.currindex = index;
+            this.$emit('navClick',index);
         },
         back(){
             this.$router.go(-1);

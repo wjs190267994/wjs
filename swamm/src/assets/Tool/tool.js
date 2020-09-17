@@ -5,7 +5,7 @@ export function debounds(func,delay) {
          let arg = arguments;
          timer = setTimeout(() => {
              func.apply(this,...arg);
-            //  console.log("ddfdfd")
+             console.log("ddfdfd")
          }, delay);
         
      }
