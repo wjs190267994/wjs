@@ -10,9 +10,7 @@ Vue.prototype.$bus = new Vue();
 // Vue.use(Fastclick)
 Vue.use(vuelazyload)
 Fastclick.attach(document.body);
-console.log('this is wjsbranch push');
-console.log('this is gitHub eidu');
-console.log('this is wjsbranch push');
+alert(111);
 
 Vue.config.productionTip = false
 
