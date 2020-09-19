@@ -12,6 +12,7 @@ Vue.use(vuelazyload)
 Fastclick.attach(document.body);
 console.log('this is wjsbranch push');
 console.log('this is gitHub eidu');
+console.log('this is wjsbranch push');
 
 Vue.config.productionTip = false
 
