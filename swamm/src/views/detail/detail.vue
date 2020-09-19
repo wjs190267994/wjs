@@ -27,6 +27,8 @@ import detailscroll  from '@/components/content/scroll/scroll'
 import goodlist  from '@/components/content/GoodList/goodlist'
 import backup from '@/components/content/backup/backup'
 
+import {backTop} from '@/assets/commen/mixin.js'
+
 
 import {getDetail,GoodsInfo,Params,getRecommed} from '@/network/detaildata'
 
@@ -44,10 +46,11 @@ export default {
             rateDate:{},
             fun:null,
             recommend:[],
-            isShowback:false,
+            // isShowback:false,
             navTooffsetTop:[]
         }
     },
+    mixins:[backTop],
     mounted() {
      this.fun =  debounds( this.$refs.scroll.refresh,100);
      this.$bus.$on('detailitemimgLoad',()=>{
@@ -69,9 +72,9 @@ export default {
       this.navTooffsetTop.push(this.$refs.recommend.$el.offsetTop-45);
       console.log(this.navTooffsetTop);
       },
-      backup(){
-        this.$refs.scroll.backup();
-      },
+      // backup(){
+      //   this.$refs.scroll.backup();
+      // },
 
       scrollDown(op){
         this.isShowback = op.y < -1000? true : false 

@@ -12,7 +12,7 @@
       <goodList :items="getListType" ></goodList>
 
     </scroll>
-      <backUp v-if="isShouback" @click.native="backup"></backUp>
+      <backUp v-if="isShowback" @click.native="backup"></backUp>
     <!-- <ul>
       <li>li</li>
       <li>li</li>
@@ -130,8 +130,8 @@ import recommend from './homeComponents/homeRecomed'
 import TabC from '@/components/content/TabContr/TabContr'
 import goodList from '@/components/content/GoodList/goodlist'
 import scroll from '../../components/content/scroll/scroll'
-import backUp from '@//components/content/backup/backup'
-
+// import backUp from '@//components/content/backup/backup'
+import {backTop} from '@/assets/commen/mixin.js'
 
 export default {
   data(){
@@ -144,12 +144,13 @@ export default {
         'sell':{page:0,list:[]}
       },
       CurrGoodsType:'pop',
-      isShouback:false,
+      // isShouback:false,
       tabCoffset:0,
       isTabFeix:false,
       activeOffsetTop:0
     }
   },
+  mixins:[backTop],
   components:{
     navBar,
     homeSwipe,
@@ -157,7 +158,7 @@ export default {
     TabC,
     goodList,
     scroll,
-    backUp
+    // backUp
   },
   created(){
     this.homemultdata();//请求轮播图数据
@@ -188,7 +189,7 @@ export default {
     * 
     */
     scrollDown(op){
-        this.isShouback = op.y > -1000 ? false : true;
+        this.isShowback = op.y > -1000 ? false : true;
         this.isTabFeix = op.y > -this.tabCoffset - 88 ? false : true;
     },
     moreLoad(){
@@ -210,10 +211,10 @@ export default {
       }
       this.$refs.tabC.activeIndex =  this.$refs.tabC1.activeIndex = index;
     },
-    backup(){
-        // console.log(this.$refs.scroll)
-        this.$refs.scroll.backup();
-    },
+    // backup(){
+    //     // console.log(this.$refs.scroll)
+    //     this.$refs.scroll.backup();
+    // },
 
 /**
  * 网络方法
@@ -280,6 +281,7 @@ export default {
   }
   .tab-control {
     position: sticky;
+    height: 25px;
     top: 44px;
   }
   .istabFeix {

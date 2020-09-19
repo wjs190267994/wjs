@@ -15,7 +15,7 @@
               <span class="style">{{rate.style}}</span>
           </div>
           <div class="img" >
-              <img v-for="(item,index) in rate.images" :key="index" :src="item" alt="" @load="imgLoad">
+              <img v-for="(item,index) in rate.images" :key="index" v-lazy="item" alt="" @load="imgLoad">
           </div>
       </div>
   </div>    
